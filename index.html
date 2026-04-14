@@ -2,15 +2,280 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>jiang-keyi 的个人主页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jiang-keyi | 医学科研个人主页</title>
     <style>
-        body { font-family: "Microsoft Yahei", sans-serif; max-width: 800px; margin: 50px auto; padding: 0 20px; }
-        h1 { color: #2c3e50; }
+        /* 全局重置与基础样式 */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f7f6;
+        }
+
+        a { text-decoration: none; color: #0056b3; transition: color 0.3s; }
+        a:hover { color: #004494; }
+
+        /* 容器 */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 头部导航 */
+        header {
+            background: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: #555;
+        }
+
+        /* 英雄区 */
+        .hero {
+            background: linear-gradient(135deg, #0056b3 0%, #003d80 100%);
+            color: #fff;
+            padding: 80px 0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .hero h1 { font-size: 2.5rem; margin-bottom: 10px; }
+        .hero p { font-size: 1.2rem; opacity: 0.9; }
+
+        /* 通用板块样式 */
+        section {
+            background: #fff;
+            padding: 40px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        h2 {
+            color: #2c3e50;
+            border-left: 4px solid #0056b3;
+            padding-left: 15px;
+            margin-bottom: 25px;
+        }
+
+        /* 关于我 */
+        .about-content {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+        }
+        
+        /* 占位头像样式 */
+        .avatar-placeholder {
+            width: 150px;
+            height: 200px;
+            background-color: #e9ecef;
+            border-radius: 4px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6c757d;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        /* 研究方向 */
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .research-card {
+            border: 1px solid #eee;
+            padding: 20px;
+            border-radius: 5px;
+            transition: box-shadow 0.3s;
+        }
+        .research-card:hover { box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .research-card h3 { margin-bottom: 10px; color: #0056b3; }
+
+        /* 发表论文 */
+        .pub-list { list-style: none; }
+        .pub-item {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed #ddd;
+        }
+        .pub-item:last-child { border-bottom: none; }
+        .pub-title { font-weight: bold; font-size: 1.1rem; }
+        .pub-authors { color: #555; font-size: 0.95rem; }
+        .pub-venue { font-style: italic; color: #0056b3; }
+
+        /* 联系方式 */
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #f8f9fa;
+            padding: 10px 15px;
+            border-radius: 5px;
+        }
+
+        /* 页脚 */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        /* 响应式调整 */
+        @media (max-width: 600px) {
+            .header-content { flex-direction: column; gap: 15px; }
+            .about-content { flex-direction: column; }
+            section { padding: 25px; }
+        }
     </style>
 </head>
 <body>
-    <h1>👋 欢迎来到 jiang-keyi 的个人网站</h1>
-    <p>这是我的第一个 GitHub Pages 网站 🚀</p>
-    <p>后续会更新我的科研、学习、生活内容~</p>
+
+    <!-- 导航栏 -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">jiang-keyi</div>
+            <nav>
+                <ul>
+                    <li><a href="#about">关于我</a></li>
+                    <li><a href="#research">研究方向</a></li>
+                    <li><a href="#publications">学术成果</a></li>
+                    <li><a href="#contact">联系方式</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 首页横幅 -->
+    <div class="hero">
+        <div class="container">
+            <h1>你好，我是 jiang-keyi</h1>
+            <p>医学科研工作者 | 专注于生物信息学与分子医学</p>
+        </div>
+    </div>
+
+    <div class="container">
+        
+        <!-- 关于我 -->
+        <section id="about">
+            <h2>关于我</h2>
+            <div class="about-content">
+                <!-- 如果你有照片，可以把 div 换成 <img src="photo.jpg" class="avatar"> -->
+                <div class="avatar-placeholder">此处放置<br>个人照片</div>
+                <div class="bio">
+                    <p>你好！我是一名致力于医学科研的学者。目前主要聚焦于神经内科疾病（如脑出血）、代谢性疾病（如痛风、妊娠糖尿病）的基础与临床研究。</p>
+                    <br>
+                    <p>我熟练运用生物信息学方法（如孟德尔随机化、单细胞测序分析）进行数据挖掘，并热衷于将R与Python编程应用于解决实际医学问题。</p>
+                    <br>
+                    <p><strong>教育背景：</strong> 南方医科大学 临床医学博士</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 研究方向 -->
+        <section id="research">
+            <h2>研究方向</h2>
+            <div class="research-grid">
+                <div class="research-card">
+                    <h3>🧬 生物信息学</h3>
+                    <p>孟德尔随机化(MR)、全基因组关联分析(GWAS)、单细胞数据分析。</p>
+                </div>
+                <div class="research-card">
+                    <h3>🧠 神经内科</h3>
+                    <p>脑出血的分子机制、ANXA5等基因在神经炎症中的作用。</p>
+                </div>
+                <div class="research-card">
+                    <h3>💊 药理与代谢</h3>
+                    <p>痛风与高尿酸血症、中药活性成分（如小檗碱）的分子动力学模拟。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 学术成果 -->
+        <section id="publications">
+            <h2>代表性论文</h2>
+            <ul class="pub-list">
+                <li class="pub-item">
+                    <div class="pub-title">Causal relationship between Gestational Diabetes Mellitus and Gout: A Mendelian Randomization Study</div>
+                    <div class="pub-authors">Jiang K, et al.</div>
+                    <div class="pub-venue">*Frontiers in Endocrinology*, 2026</div>
+                    <a href="#" target="_blank">DOI: 10.xxxx/xxxxx</a>
+                </li>
+                <li class="pub-item">
+                    <div class="pub-title">Role of ANXA5 in Pyroptosis of Monocytes in Intracerebral Hemorrhage</div>
+                    <div class="pub-authors">Jiang K, et al.</div>
+                    <div class="pub-venue">*Journal of Neuroinflammation*, 2025</div>
+                    <a href="#" target="_blank">DOI: 10.xxxx/xxxxx</a>
+                </li>
+            </ul>
+        </section>
+
+        <!-- 联系方式 -->
+        <section id="contact">
+            <h2>联系方式</h2>
+            <p>欢迎学术交流与合作！</p>
+            <br>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>📧</span>
+                    <span>Email: <a href="mailto:jiang.keyi@example.com">jiang.keyi@example.com</a></span>
+                </div>
+                <div class="contact-item">
+                    <span>💻</span>
+                    <span>GitHub: <a href="https://github.com/jiang-keyi" target="_blank">@jiang-keyi</a></span>
+                </div>
+                <div class="contact-item">
+                    <span>🔬</span>
+                    <span>ORCID: <a href="#" target="_blank">0000-0000-0000-0000</a></span>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 jiang-keyi. All rights reserved.</p>
+            <p style="margin-top: 5px; font-size: 0.8rem;">Hosted on GitHub Pages</p>
+        </div>
+    </footer>
+
 </body>
 </html>
